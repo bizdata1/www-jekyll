@@ -4,6 +4,6 @@ services:
   jekyll:
     image: bretfisher/jekyll-serve
     volumes:
-      - .:/site
+      - ./hydra-jekyll-template:/site
     ports:
       - '4000:4000'
