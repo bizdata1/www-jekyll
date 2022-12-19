@@ -57,70 +57,9 @@
       </div>
       <ul class="navbar-nav {% if include.alignment_class %} {{include.alignment_class}} {% else %} mx-auto {% endif %}">
         {% for menu in site.data.navigation.main_menu %}
-        {% assign check_menu = menu.menu_type %}
-        {% case check_menu %}
-        {% when "megamenu" %}
         <li class="nav-item">
           <a class="nav-link" href="{{menu.url}}">{{menu.text}}</a>
-          <ul class="dropdown-menu mega-menu boxed list-view text-left">
-            <li class="mega-menu-content">
-              <div class="row">
-                {% for column in menu.submenu cols: 4 %}
-                <div class="col-lg-3">
-                  <ul class="list-unstyled">
-                    <li><a class="dropdown-item" href="{{column.url}}">{{column.text}}</a></li>
-                  </ul>
-                </div>
-                <!--/column -->
-                {% endfor %}
-              </div>
-              <!--/.row -->
-            </li>
-            <!--/.mega-menu-content-->
-          </ul>
-          <!--/.dropdown-menu -->
         </li>
-        {% when "dropdown" %}
-        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="{{menu.url}}">{{menu.text}}</a>
-          <ul class="dropdown-menu">
-            {% for label_two in menu.label_two %}
-            <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">{{label_two.sub_menu_text}}</a>
-              <ul class="dropdown-menu">
-                {% for sub_menu in label_two.sub_menu %}
-                <li class="nav-item"><a class="dropdown-item" href="{{sub_menu.url}}">{{sub_menu.text}}</a></li>
-                {% endfor %}
-              </ul>
-            </li>
-            {% endfor %}
-            {% if menu.submenu %}
-            {% for label_one in menu.submenu %}
-            <li><a class="dropdown-item" href="{{label_one.url}}">{{label_one.text}}</a></li>
-            {% endfor %}
-            {% endif %}
-          </ul>
-        </li>
-        {% else %}
-        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="{{menu.url}}">{{menu.text}}</a>
-          <ul class="dropdown-menu">
-            {% if menu.label_two %}
-            {% for label_two in menu.label_two %}
-            <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">{{label_two.sub_menu_text}}</a>
-              <ul class="dropdown-menu">
-                {% for sub_menu in label_two.sub_menu %}
-                <li class="nav-item"><a class="dropdown-item" href="{{sub_menu.url}}">{{sub_menu.text}}</a></li>
-                {% endfor %}
-              </ul>
-            </li>
-            {% endfor %}
-            {% endif %}
-            {% if menu.submenu %}
-            {% for label_one in menu.submenu %}
-            <li><a class="dropdown-item" href="{{label_one.url}}">{{label_one.text}}</a></li>
-            {% endfor %}
-            {% endif %}
-          </ul>
-        </li>
-        {% endcase %}
         {% endfor %}
       </ul>
       <!-- /.navbar-nav -->
